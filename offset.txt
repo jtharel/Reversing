@@ -1,0 +1,6 @@
+Create a customer pattern set for identifying the offset
+msf-pattern_create -l <length in bytes>
+
+
+Find the offset in bytes provided the address of EIP at the time of the crash.
+msf-pattern_offset -q <address of EIP>
